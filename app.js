@@ -2,7 +2,7 @@ const notes=require('./notes.js')
 const chalk=require('chalk')
 const yargs =require('yargs')
 
-const getNotes =notes()
+// const getNotes =notes()
 
 yargs.version('1.1.0')
 // Adding Add Cammand
@@ -23,8 +23,7 @@ yargs.command({
        }
 	},
 	handler:function(argv){
-		console.log('Adding a new note',argv.title)
-		console.log('Body of the note',argv.body)
+		notes.addNotes(argv.title,argv.body)
 	}
 })
 
@@ -40,8 +39,8 @@ yargs.command({
          type:'string'
 		}
 	},
-	handler:function(){
-		console.log('Removing a note')
+	handler:function(argv){
+		notes.removeNotes(argv.title)
 	}
 })
 
