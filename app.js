@@ -12,7 +12,7 @@ yargs.command({
 	describe:'Add a new Node',
 	builder:{
        title:{
-       	describe:'Note Title',
+       	describe:'Please Enter Note Title',
        	demandOption:true,
        	type:'string'
        },
