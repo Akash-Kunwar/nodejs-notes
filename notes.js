@@ -58,6 +58,41 @@ const load=function(){
 	
 }
 
+const listNodes=function(){
+	const data =load()
+	console.log(chalk.red.bgWhite('Listing Notes'))
+	data.forEach(function(temp){
+		console.log(chalk.blue.bold.bgWhite(temp.title))
+		// console.log(temp.body)
+	})
+}
+
+const readNote =function(title){
+
+	const data=load()
+	// const tempNotes=data.filter(function(temp){
+ //          return temp.title===title
+	// })
+
+	// console.log(tempNotes)
+
+	// data.forEach(function(temp){
+	// 	if (temp.title===title){
+	// 		console.log(chalk.red.bgWhite(temp.body))
+	// 	}
+	// })
+
+	const tempNote =data.find(function(note){
+		return note.title===title
+	})
+	if(tempNote){
+			console.log(chalk.inverse(tempNote.body))
+	}
+	else{
+		console.log(chalk.red.bgWhite('Error: Note Not Found'))
+	}
+
+}
 
 const save=function(data){
 	const dataJson=JSON.stringify(data)
@@ -67,5 +102,7 @@ const save=function(data){
 module.exports={
 	getNotes:getNotes,
 	addNotes:addNotes,
-	removeNotes:removeNotes
+	removeNotes:removeNotes,
+	listNodes:listNodes,
+	readNote:readNote
 }
